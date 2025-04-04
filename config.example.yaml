@@ -3,11 +3,11 @@
 
 general:
   #Name of the application
-  appName: Pingvin Share
+  appName: MindMuse Private File Share
   #On which URL Pingvin Share is available
-  appUrl: http://localhost:3000
+  appUrl: https://fileshare.apps.mindmuse.care
   #Whether to set the secure flag on cookies. If enabled, the site will not function when accessed over HTTP.
-  secureCookies: "false"
+  secureCookies: "true"
   #Whether to show the home page
   showHomePage: "true"
   #Time in hours after which a user must log in again (default: 3 months).
@@ -16,7 +16,7 @@ share:
   #Whether registration is allowed
   allowRegistration: "true"
   #Whether unauthenticated users can create shares
-  allowUnauthenticatedShares: "false"
+  allowUnauthenticatedShares: "true"
   #Maximum share expiration. Set to 0 to allow unlimited expiration.
   maxExpiration: 0 days
   #Default length for the generated ID of a share. This value is also used to generate links for reverse shares. A value below 8 is not considered secure.
@@ -31,7 +31,7 @@ share:
   autoOpenShareModal: "false"
 email:
   #Whether to allow email sharing with recipients. Only enable this if SMTP is activated.
-  enableShareEmailRecipients: "false"
+  enableShareEmailRecipients: "true"
   #Subject of the email which gets sent to the share recipients.
   shareRecipientsSubject: Files shared with you
   #Message which gets sent to the share recipients. Available variables:
@@ -45,17 +45,17 @@ email:
     Hey!
 
 
-    {creator} ({creatorEmail}) shared some files with you, view or download the
+    {creator} ({creatorEmail}) is privately and securely sharing some files with you, view or download the
     files with this link: {shareUrl}
 
 
-    The share will expire {expires}.
+    The files and share link will expire {expires}.
 
 
     Note: {desc}
 
 
-    Shared securely with Pingvin Share 🐧
+    Shared securely with MindMuse Private File Share
   #Subject of the sent email when someone created a share with your reverse share link.
   reverseShareSubject: Reverse share link used
   #Message which gets sent when someone created a share with your reverse share link. {shareUrl} will be replaced with the creator's name and the share URL.
@@ -64,9 +64,9 @@ email:
 
     A share was just created with your reverse share link: {shareUrl}
 
-    Shared securely with Pingvin Share 🐧
+    Shared securely with MindMuse Private File Share
   #Subject of the sent email when a user requests a password reset.
-  resetPasswordSubject: Pingvin Share password reset
+  resetPasswordSubject: MindMuse Private File Share password reset
   #Message which gets sent when a user requests a password reset. {url} will be replaced with the reset password URL.
   resetPasswordMessage: >-
     Hey!
@@ -78,37 +78,37 @@ email:
     The link expires in a hour.
 
 
-    Pingvin Share 🐧
+    MindMuse Private File Share
   #Subject of the sent email when an admin invites a user.
-  inviteSubject: Pingvin Share invite
+  inviteSubject: MindMuse Private File Share invite
   #Message which gets sent when an admin invites a user. {url} will be replaced with the invite URL, {email} with the email and {password} with the users password.
   inviteMessage: >-
     Hey!
 
 
-    You were invited to Pingvin Share. Click this link to accept the invite:
+    You were invited to MindMuse Private File Share. Click this link to accept the invite:
     {url}
 
 
     You can use the email "{email}" and the password "{password}" to sign in.
 
 
-    Pingvin Share 🐧
+    MindMuse Private File Share
 smtp:
   #Whether SMTP is enabled. Only set this to true if you entered the host, port, email, user and password of your SMTP server.
-  enabled: "false"
+  enabled: "true"
   #Only set this to true if you need to trust self signed certificates.
   allowUnauthorizedCertificates: "false"
   #Host of the SMTP server
-  host: ""
+  host: ${SMTP_HOST}
   #Port of the SMTP server
-  port: "0"
+  port: ${SMTP_PORT}
   #Email address from wich the emails get sent
-  email: ""
+  email: ${SMTP_EMAIL}
   #Username of the SMTP server
-  username: ""
+  username: ${SMTP_USERNAME}
   #Password of the SMTP server
-  password: ""
+  password: ${SMTP_PASSWORD}
 ldap:
   #Use LDAP authentication for user login
   enabled: "false"
@@ -218,9 +218,9 @@ legal:
 #This configuration is used to create the initial user when the application is started for the first time.
 #Make sure to change at least the password as soon as you log in!
 initUser:
-  enabled: false
-  username: admin
-  email: admin@example.com
-  password: my-secure-password
+  enabled: true
+  username: ${INIT_USERNAME}
+  email: ${INIT_EMAIL}
+  password: ${INIT_PASS}
   isAdmin: true
   ldapDN: ""

@@ -5,7 +5,15 @@ services:
     ports:
       - 3000:3000
     environment:
-      - TRUST_PROXY=false # Set to true if a reverse proxy is in front of the container
+      - TRUST_PROXY=true # Set to true if a reverse proxy is in front of the container
+      - SMTP_HOST=${SMTP_HOST}
+      - SMTP_PORT=${SMTP_PORT}
+      - SMTP_EMAIL=${SMTP_EMAIL}
+      - SMTP_USERNAME=${SMTP_USERNAME}
+      - SMTP_PASSWORD=${SMTP_PASSWORD}
+      - INIT_USERNAME=${INIT_USERNAME}
+      - INIT_EMAIL=${INIT_EMAIL}
+      - INIT_PASS=${INIT_PASS}
     volumes:
       - "./data:/opt/app/backend/data"
       - "./data/images:/opt/app/frontend/public/img"

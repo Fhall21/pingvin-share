@@ -2,6 +2,8 @@ services:
   pingvin-share:
     image: stonith404/pingvin-share # or ghcr.io/stonith404/pingvin-share
     restart: unless-stopped
+    ports:
+      - 3010:3010
     environment:
       - TRUST_PROXY=true # Set to true if a reverse proxy is in front of the container
       - SMTP_HOST=${SMTP_HOST}

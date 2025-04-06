@@ -57,9 +57,9 @@ WORKDIR /opt/app
 COPY ./reverse-proxy  /opt/app/reverse-proxy
 COPY ./scripts/docker ./scripts/docker
 
-EXPOSE 3000
+EXPOSE 3010
 
-HEALTHCHECK --interval=10s --timeout=3s CMD curl -f http://localhost:3000/api/health || exit 1
+HEALTHCHECK --interval=10s --timeout=3s CMD curl -f http://localhost:3010/api/health || exit 1
 
 ENTRYPOINT ["sh", "./scripts/docker/create-user.sh"]
 CMD ["sh", "./scripts/docker/entrypoint.sh"]
